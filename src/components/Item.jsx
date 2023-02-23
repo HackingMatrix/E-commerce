@@ -3,7 +3,7 @@ import React from 'react'
 const Item = ({nombre, precio, modelo, gama, imagen}) => {
   return (
     <>
-    <div className="container d-flex justify-content-center align-items-center">
+    <div className="container d-flex justify-content-center align-items-center pt-5 mt-5">
         <div className="row d-flex align-items-center">
             <div className="col-sm-12">
     <div class="card d-flex align-items-center">

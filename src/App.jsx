@@ -2,15 +2,28 @@ import { useState } from 'react'
 import NavBar from './components/NavBar'
 import ItemListContainer from './components/ItemListContainer'
 import ItemCount from './components/ItemCount'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Welcome from './components/Welcome'
+import Cart from './components/Cart'
 
 function App() {
 
   return (
-    <div>
+    <BrowserRouter>
+
+
       <NavBar/>
-      <ItemListContainer greeting="¡Bienvenido a nuestra tienda!"/>
-      <ItemCount/>
-    </div>
+
+      <Routes>
+
+      <Route exact path="/itemListContainer" element={<ItemListContainer/>}/>
+      <Route exact path="/" element={<Welcome/>}/>
+      <Route exact path="/cart" element={<Cart/>}/>
+      
+      
+      </Routes>
+
+    </BrowserRouter>
   )
 }
 
