@@ -1,17 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Item = ({nombre, precio, modelo, gama, imagen}) => {
+const Item = ({nombre, precio, modelo, gama, imagen, id}) => {
   return (
     <>
     <div className="container d-flex justify-content-center align-items-center pt-5 mt-5">
         <div className="row d-flex align-items-center">
             <div className="col-sm-12">
-    <div class="card d-flex align-items-center">
-  <img src={imagen} class="card-img-top w-25" alt="..."/>
-  <div class="card-body ">
-    <h5 class="card-title">{nombre}</h5>
-    <p class="card-text">Precio: {precio}</p>
-    <a href="#" class="btn btn-primary">Detalles</a>
+    <div className="card d-flex align-items-center">
+  <img src={imagen} className="card-img-top w-25" alt="..."/>
+  <div className="card-body ">
+    <h5 className="card-title">{nombre}</h5>
+    <p className="card-text">Precio: {precio}</p>
+    <Link className="btn btn-primary" to={`/item/${id}`}>
+    Detalles
+    </Link>
   </div>
   </div>
 </div>

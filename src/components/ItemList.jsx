@@ -7,6 +7,7 @@ const ItemList = ({datos}) => {
     {datos.map((dato) => (
         <Item
         key={dato.id}
+        id={dato.id}
         nombre={dato.nombre}
         precio={dato.precio}
         modelo={dato.modelo}

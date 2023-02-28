@@ -1,8 +1,8 @@
 import React from 'react'
-import {useState } from 'react'
+import { useState } from 'react'
 
-const ItemCount = () => {
-
+const ItemCount = ({ data }) => {
+  
     const [counter, setCounter]= useState(0);
 
     const restar = () => {
@@ -11,11 +11,21 @@ const ItemCount = () => {
         }
     }
 
+    const sumar = () => {
+      if (counter !== data) {
+          setCounter(counter + 1)
+
+      }
+  }
+
+
   return (
     <div>
-        <p>{counter}</p>
-        <button onClick={() => setCounter(counter + 1)}>+</button>
-        <button onClick={restar}>-</button>
+        
+        <button type="button" className="btn btn-danger" onClick={restar}>-</button>
+        <button type="button" className="btn btn-primary">Agregar al carrito: {counter}</button>
+        <button type="button" className="btn btn-success" onClick={sumar}>+</button>
+        
 
     </div>
   )
