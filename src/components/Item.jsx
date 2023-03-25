@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Loader from './Loader'
 
 const Item = ({nombre, precio, modelo, gama, imagen, id}) => {
   return (
     <>
-    <div className="container d-flex justify-content-center align-items-center pt-5 mt-5">
+    <div className="container d-flex justify-content-center align-items-center pt-5 mt-5 pb-5">
         <div className="row d-flex align-items-center">
             <div className="col-sm-12">
     <div className="card d-flex align-items-center">

@@ -2,6 +2,7 @@ import React from 'react'
 import logo from "../assets/pc-gamer.svg"
 import CartWidget from './CartWidget'
 import {Link} from "react-router-dom"
+import Loader from './Loader'
 import '../styles/styles.css'
 
 const NavBar = () => {
@@ -28,7 +29,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" to="/itemListContainer">
+          <Link className="nav-link active" to="/itemListContainer" onClick={<Loader/>}>
           Catálogo
           </Link>
         </li>
@@ -37,13 +38,13 @@ const NavBar = () => {
             Gama
           </a>
           <ul className="dropdown-menu">
-            <Link className="dropdown-item" to={`/${"Baja"}`}>
+            <Link className="dropdown-item" to={`/${"Baja"}`} onClick={<Loader/>}>
             <li>Baja</li>
             </Link>
-            <Link className="dropdown-item" to={`/${"Media"}`}>
+            <Link className="dropdown-item" to={`/${"Media"}`} onClick={<Loader/>}>
             <li>Media</li>
             </Link>
-            <Link className="dropdown-item" to={`/${"Alta"}`}>
+            <Link className="dropdown-item" to={`/${"Alta"}`} onClick={<Loader/>}>
             <li>Alta</li>
             </Link>
           </ul>

@@ -2,6 +2,7 @@ import React from 'react'
 import Item from './Item'
 
 const ItemList = ({datos}) => {
+  console.log(datos)
   return (
     <>
     {datos.map((dato) => (

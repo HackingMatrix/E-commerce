@@ -1,11 +1,30 @@
 import React from 'react'
-
+import { useCartContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
+import ItemCart from './ItemCart'
 
 const Cart = () => {
-  return (
+
+  const {cart, totalProductos, totalCompra} = useCartContext()
+
+  if (cart.length == 0) {
+    return(
+      <>
+    <h2 className="text-center pt-5">No has agregado elementos al carrito</h2>
+    <Link to={'/itemListContainer'} ><h3 className='text-center pt-5'>Ir a comprar</h3></Link>
+    </>
+    )
+  }
+
+  else {return (
+    <>
+    {
+      cart.map(product => <ItemCart key={product.id} product={product}/>)
+    }
+    <h3 className='text-center pt-5'>Total: {totalCompra()}</h3>
     <div>
         <div className="container">
-            <div className="row pt-5 mt-5">
+            <div className="row pt-5 mt-5 pb-5 mb-5">
                 <div className="col">
         <form>
     <div className="mb-3">
@@ -27,7 +46,9 @@ const Cart = () => {
   </div>
   </div>
   </div>
-  )
+  </>
+  )}
+  
 }
 
 export default Cart

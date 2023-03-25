@@ -1,6 +1,8 @@
 import React from 'react'
 import ItemList from './ItemList'
 import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import Loader from './Loader'
 
 const ItemListContainer = () => {
 
@@ -11,36 +13,36 @@ console.log(gama)
                   {id: 3, nombre: "GeForce RTX", precio: 12000, modelo:3070, gama:"Alta", imagen:"src/assets/tarjeta3.jpg", uso: "Gaming", stock:5},
                   {id: 4, nombre: "GeForce RTX", precio: 20000, modelo:4090, gama:"Alta", imagen:"src/assets/tarjeta4.jpg", uso: "Gaming", stock:3}]
 
-    const getDatos = () => {
-      return new Promise((resolve, reject) => {
-        if (datos.lenght === 0) {
-          reject(new Error("No hay datos para mostrar"))
+  const [data, setData] = useState([])
+  const [filt, setFilter] = useState([])
+ 
+  useEffect(() => {
+    const getData = new Promise(resolve => {
+      setTimeout(() => {
+        resolve(datos)
+      }, 1000);
+    })
 
-        }
-        else {
-          setTimeout(() => {
+    getData.then(res => setData(res))
+    
+  },[])
+
+  useEffect(() =>{
+    const getFilter = new Promise (resolve => {
+        setTimeout(() => {
             resolve(datos)
-          },3000)
-        }
-      })
-    }
+        }, 1000);
+    })
 
-    async function fetchData() {
-      try {
-        const datosFetched = await getDatos()
-        console.log(datosFetched)
-      }
-      catch(err) {
-        console.log(err)
-      }
-    }
-
-    fetchData()
+    getFilter.then(res => setFilter(res.filter(card => card.gama == gama)))
+},[gama])
 
     const catFilter = datos.filter((dato) => dato.gama === gama)
+    console.log(filt)
   return (
     <>
-    {gama ? <ItemList datos={catFilter} /> : <ItemList datos={datos} />}
+    <Loader/>
+    {gama ? <ItemList datos={filt} /> : <ItemList datos={data} />}
     </>
   )
 }

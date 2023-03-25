@@ -1,9 +1,15 @@
 import React from 'react'
 import { useState } from 'react'
+import { useContext } from 'react';
+import { useEffect } from 'react';
 
-const ItemCount = ({ data }) => {
-  
-    const [counter, setCounter]= useState(0);
+const ItemCount = ({ initial, data, stock, onAdd }) => {
+
+    const [counter, setCounter]= useState(initial);
+
+    useEffect(() => {
+        setCounter(parseInt(initial))
+    },[initial])
 
     const restar = () => {
         if (counter !== 0) {
@@ -12,7 +18,7 @@ const ItemCount = ({ data }) => {
     }
 
     const sumar = () => {
-      if (counter !== data) {
+      if (counter !== stock) {
           setCounter(counter + 1)
 
       }
@@ -23,7 +29,7 @@ const ItemCount = ({ data }) => {
     <div>
         
         <button type="button" className="btn btn-danger" onClick={restar}>-</button>
-        <button type="button" className="btn btn-primary">Agregar al carrito: {counter}</button>
+        <button disabled={stock <= 0 }type="button" className="btn btn-light"  onClick={() => {onAdd(counter)}}>Agregar al carrito: {counter}</button>
         <button type="button" className="btn btn-success" onClick={sumar}>+</button>
         
 
