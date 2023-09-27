@@ -31,9 +31,9 @@ const ItemDetail = ({ datos, filtro }) => {
     <p className="card-text">Precio: {datos.precio}</p>
     {
       ircarrito ? <div>
-      <Link to='/Cart' >Terminar Compra</Link>
+      <Link to='/Cart' ><button className='btn btn-warning mb-3'>Terminar Compra</button></Link>
       <br />
-      <Link to={'/ItemListContainer'}>Seguir Comprando</Link>
+      <Link to={'/ItemListContainer'}><button className='btn btn-warning'>Seguir Comprando</button></Link>
       </div>
       : <ItemCount initial={1} stock={datos.stock} onAdd={onAdd}/>
     }

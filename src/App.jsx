@@ -7,9 +7,11 @@ import Welcome from './components/Welcome'
 import Cart from './components/Cart'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import CartProvider from './context/CartContext'
+import FireProvider from './context/FireContext'
 function App() {
 
   return (
+  <FireProvider>
     <CartProvider>
       
     <BrowserRouter>
@@ -22,10 +24,7 @@ function App() {
       <Route exact path="/itemListContainer" element={<ItemListContainer/>}/>
       <Route exact path="/" element={<Welcome/>}/>
       <Route exact path="/cart" element={<Cart/>}/>
-      <Route 
-        exact
-        path='/:gama'
-        element={<ItemListContainer/>}
+      <Route exact path='/:gamaCat'element={<ItemListContainer/>}
       />
 
       <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
@@ -34,7 +33,8 @@ function App() {
       </Routes>
 
     </BrowserRouter>
-    </CartProvider>
+   
+    </CartProvider> </FireProvider>
   )
 }
 
